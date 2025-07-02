@@ -8,7 +8,7 @@ import {
   index,
   pgEnum,
 } from "drizzle-orm/pg-core";
-import { DAYS_OF_WEEK_IN_ORDER } from "../constants";
+import { DAYS_OF_WEEK_IN_ORDER } from "../app/constants";
 import { relations } from "drizzle-orm";
 
 const createdAt = timestamp("createdAt").notNull().defaultNow();
