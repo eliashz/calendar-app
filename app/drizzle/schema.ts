@@ -9,6 +9,7 @@ import {
   pgEnum,
 } from "drizzle-orm/pg-core";
 import { DAYS_OF_WEEK_IN_ORDER } from "../constants";
+import { relations } from "drizzle-orm";
 
 const createdAt = timestamp("createdAt").notNull().defaultNow();
 const updatedAt = timestamp("updatedAt")
@@ -39,6 +40,10 @@ export const ScheduleTable = pgTable("schedules", {
   updatedAt,
 });
 
+export const scheduleRelations = relations(ScheduleTable, ({ many }) => ({
+  availabilities: many(ScheduleAvailanilityTable),
+}));
+
 export const scheduleDayOfWeekEnum = pgEnum("day", DAYS_OF_WEEK_IN_ORDER);
 
 export const ScheduleAvailanilityTable = pgTable(
@@ -53,4 +58,14 @@ export const ScheduleAvailanilityTable = pgTable(
     dayOfWeek: scheduleDayOfWeekEnum("dayOfWeek").notNull(),
   },
   table => [index("scheduleIdIndex").on(table.scheduleId)]
+);
+
+export const ScheduleAvailabilityRelations = relations(
+  ScheduleAvailanilityTable,
+  ({ one }) => ({
+    schedule: one(ScheduleTable, {
+      fields: [ScheduleAvailanilityTable.scheduleId],
+      references: [ScheduleTable.id],
+    }),
+  })
 );
