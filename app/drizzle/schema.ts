@@ -28,7 +28,7 @@ export const EventTable = pgTable(
     createdAt,
     updatedAt,
   },
-  (table) => [index("cleakUserIdIndex").on(table.cleckUserId)]
+  table => [index("cleakUserIdIndex").on(table.cleckUserId)]
 );
 
 export const ScheduleTable = pgTable("schedules", {
@@ -52,5 +52,5 @@ export const ScheduleAvailanilityTable = pgTable(
     endTime: text("endTime").notNull(),
     dayOfWeek: scheduleDayOfWeekEnum("dayOfWeek").notNull(),
   },
-  (table) => [index("scheduleIdIndex").on(table.scheduleId)]
+  table => [index("scheduleIdIndex").on(table.scheduleId)]
 );
