@@ -7,7 +7,11 @@ const isPlublicRoute = createRouteMatcher([
   "/book(.*)",
 ]);
 
-export default clerkMiddleware();
+export default clerkMiddleware(async (auth, req) => {
+  if (!isPlublicRoute(req)) {
+    await auth.protect();
+  }
+});
 
 export const config = {
   matcher: [
