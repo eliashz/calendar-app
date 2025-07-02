@@ -1,4 +1,3 @@
-import { table } from "console";
 import {
   timestamp,
   integer,
@@ -7,6 +6,7 @@ import {
   boolean,
   text,
   index,
+  pgEnum,
 } from "drizzle-orm/pg-core";
 
 const createdAt = timestamp("createdAt").notNull().defaultNow();
@@ -37,3 +37,19 @@ export const ScheduleTable = pgTable("schedules", {
   createdAt,
   updatedAt,
 });
+
+export const scheduleDayOfWeekEnum = pgEnum("day", DAYS_OF_WEEK_IN_ORDER);
+
+export const ScheduleAvailanilityTable = pgTable(
+  "scheduleAvailabilities",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    scheduleId: uuid("scheduleId")
+      .notNull()
+      .references(() => ScheduleTable.id, { onDelete: "cascade" }),
+    startTime: text("startTime").notNull(),
+    endTime: text("endTime").notNull(),
+    dayOfWeek: scheduleDayOfWeekEnum("dayOfWeek").notNull(),
+  },
+  (table) => [index("scheduleIdIndex").on(table.scheduleId)]
+);
