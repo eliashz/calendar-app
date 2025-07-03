@@ -26,7 +26,7 @@ export default function PrivateNavBar() {
                             href={item.route}
                             key={item.label}
                             className={
-                                cn('flex gap-4 items-center p-4 rounded-lg justify-start', isActive && 'bg-gray-100 rounded-2xl')
+                                cn('flex gap-4 items-center p-4 rounded-lg justify-start', isActive && 'text-indigo-900')
                             }
                         >
                             <Image 
