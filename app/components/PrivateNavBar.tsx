@@ -7,7 +7,6 @@ import { cn } from "@/lib/utils";
 
 export default function PrivateNavBar() {
     const pathname = usePathname() 
-
     return (
         <nav className="flex justify-between items-center fixed z-50 w-full h-28 bg-gray-200 px-10 gap-4 shadow-2x mb-28">
             <Link href="/events" className="flex items-center gap-1 hover:scale-90 duration-500">
@@ -27,7 +26,7 @@ export default function PrivateNavBar() {
                             href={item.route}
                             key={item.label}
                             className={
-                                cn('flex gap-4 items-center p-4 rounded-lg justify-start', isActive && 'bg-blue-100 rounded-2xl')
+                                cn('flex gap-4 items-center p-4 rounded-lg justify-start', isActive && 'bg-gray-100 rounded-2xl')
                             }
                         >
                             <Image 
