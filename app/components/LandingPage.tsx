@@ -1,7 +1,7 @@
 'use client'
 
 import { SignIn } from "@clerk/nextjs"
-import { neobrutalism } from "@clerk/themes"
+import { shadesOfPurple } from "@clerk/themes"
 import Image from "next/image"
 
 export default function LandingPage() {
@@ -32,7 +32,7 @@ export default function LandingPage() {
                 <SignIn
                     routing="hash"
                     appearance={{
-                        baseTheme: neobrutalism,
+                        baseTheme: shadesOfPurple,
                     }}
                 />
             </div>
