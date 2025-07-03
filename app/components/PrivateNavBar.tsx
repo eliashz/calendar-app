@@ -9,7 +9,7 @@ import { SignedIn, UserButton } from "@clerk/nextjs";
 export default function PrivateNavBar() {
     const pathname = usePathname() 
     return (
-        <nav className="flex justify-between items-center fixed z-50 w-full h-28 bg-gray-200 px-10 gap-4 shadow-2x mb-28">
+        <nav className="flex justify-between items-center fixed z-50 w-full h-28 bg-gray-200 px-10 gap-4 shadow-2xl mb-28">
             <Link href="/events" className="flex items-center gap-1 hover:scale-90 duration-500">
                 <Image 
                     src="/assets/logo.svg"
@@ -36,9 +36,9 @@ export default function PrivateNavBar() {
                                 width={30}
                                 height={30}
                             />
-                            <p className={cn("text-lg font-semibold mx-lg:hidden",)}> 
-                                {item.label}
-                            </p>
+                        <p className={cn("text-lg font-semibold max-lg:hidden",)}>
+                          {item.label}
+                        </p>
                         </Link>
                     )
                     })}
