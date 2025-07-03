@@ -1,8 +1,11 @@
 import { currentUser } from "@clerk/nextjs/server"
+import PublicNavBar from "../components/PublicNavBar"
 
-export default async function MainLayout({
-        children: React.ReactNode
-}) {
+export default async function MainLayout({ 
+        children, 
+    }: {
+        children: React.ReactNode 
+    }) {
     const user = await currentUser()
     return (
         <main className="relative">
