@@ -10,7 +10,7 @@ export default async function MainLayout({
     const user = await currentUser()
     return (
         <main className="relative">
-            { user ? <PrivateNavBar /> : <PublicNavBar />}
+            { !user ? <PrivateNavBar /> : <PublicNavBar />}
             <section className="pt-36">
                 {children}
             </section>
