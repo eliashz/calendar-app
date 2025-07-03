@@ -4,6 +4,7 @@ import Link from "next/link";
 import { PrivateNavLinks } from "../constants";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { SignedIn, UserButton } from "@clerk/nextjs";
 
 export default function PrivateNavBar() {
     const pathname = usePathname() 
@@ -42,8 +43,12 @@ export default function PrivateNavBar() {
                     )
                     })}
                 </div>
-
             </section>
+            <div>
+                <SignedIn>
+                    <UserButton />
+                </SignedIn>
+            </div>
         </nav>
     )
 }
