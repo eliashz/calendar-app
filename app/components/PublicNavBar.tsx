@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import { SignIn, SignInButton, SignUpButton } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
