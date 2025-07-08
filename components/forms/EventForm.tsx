@@ -45,8 +45,23 @@ export default function EventForm({
                             <Input { ...field}/>
                         </FormControl>
                         <FormDescription>
-                            THe name users will see when booking
+                            The name users will see when booking
                         </FormDescription>
+                        <FormMessage />
+                        </FormItem>
+                    )}
+                >
+                </FormField>
+                <FormField
+                    control={form.control}
+                    name="durationInMinutes"
+                    render={({ field }) => (
+                        <FormItem>
+                        <FormLabel>Duration Name</FormLabel>
+                        <FormControl>
+                            <Input type="number" { ...field}/>
+                        </FormControl>
+                        <FormDescription>In minutes</FormDescription>
                         <FormMessage />
                         </FormItem>
                     )}
