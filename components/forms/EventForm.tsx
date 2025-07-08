@@ -7,6 +7,7 @@ import z from "zod"
 import { FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "../ui/form"
 import { Input } from "../ui/input"
 import { Textarea } from "../ui/textarea"
+import { Switch } from "@radix-ui/react-switch"
 
 export default function EventForm({ 
     event, 
@@ -77,6 +78,26 @@ export default function EventForm({
                         </FormControl>
                         <FormDescription>Optional description of the event</FormDescription>
                         <FormMessage />
+                        </FormItem>
+                    )}
+                />
+                <FormField 
+                    control={form.control}
+                    name="isActive"
+                    render={({ field }) => (
+                        <FormItem>
+                            <div className="flex items-center gap-2">   
+                                <FormControl>
+                                <Switch
+                                    checked={field.value}
+                                    onCheckedChange={field.onChange}
+                                />
+                                </FormControl>
+                                <FormLabel>Active</FormLabel>
+                            </div>
+                            <FormDescription>
+                                Inactive events will not be visible for users to book
+                            </FormDescription>
                         </FormItem>
                     )}
                 />
