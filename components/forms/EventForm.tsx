@@ -6,6 +6,7 @@ import { Form, useForm } from "react-hook-form"
 import z from "zod"
 import { FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "../ui/form"
 import { Input } from "../ui/input"
+import { Textarea } from "../ui/textarea"
 
 export default function EventForm({ 
     event, 
@@ -50,8 +51,7 @@ export default function EventForm({
                         <FormMessage />
                         </FormItem>
                     )}
-                >
-                </FormField>
+                />
                 <FormField
                     control={form.control}
                     name="durationInMinutes"
@@ -65,8 +65,21 @@ export default function EventForm({
                         <FormMessage />
                         </FormItem>
                     )}
-                >
-                </FormField>
+                />
+                <FormField
+                    control={form.control}
+                    name="description"
+                    render={({ field }) => (
+                        <FormItem>
+                        <FormLabel>Description</FormLabel>
+                        <FormControl>
+                            <Textarea className="resize-none h-32" {...field}/>
+                        </FormControl>
+                        <FormDescription>Optional description of the event</FormDescription>
+                        <FormMessage />
+                        </FormItem>
+                    )}
+                />
             </form>
         </Form>
     )
