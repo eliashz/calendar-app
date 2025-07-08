@@ -2,8 +2,10 @@
 
 import { eventFormSchema } from "@/schema/events"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
+import { Form, useForm } from "react-hook-form"
 import z from "zod"
+import { FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "../ui/form"
+import { Input } from "../ui/input"
 
 export default function EventForm({ 
     event, 
@@ -21,4 +23,36 @@ export default function EventForm({
         defaultValues: event ? { ...event } :
         { isActive: true, durationInMinutes: 30, description: '', name: ''}
      })
+    
+    return (
+        <Form { ...form }>
+            <form
+                onSubmit={form.handleSubmit(onSubmit)}
+                className="flex gap-6 flex-col"
+            >
+                {form.formState.errors.root && (
+                <div className="text-destructive text-sm">
+                    {form.formState.errors.root.message}
+                </div>
+                )}
+                <FormField
+                    control={form.control}
+                    name="name"
+                    render={({ field }) => (
+                        <FormItem>
+                        <FormLabel>Event Name</FormLabel>
+                        <FormControl>
+                            <Input { ...field}/>
+                        </FormControl>
+                        <FormDescription>
+                            THe name users will see when booking
+                        </FormDescription>
+                        <FormMessage />
+                        </FormItem>
+                    )}
+                >
+                </FormField>
+            </form>
+        </Form>
+    )
 }
